@@ -295,9 +295,14 @@ class _DatePickerState extends State<_DatePickerComponent> {
                   showTitleActions: widget.route.showTitleActions,
                   bottomPadding: bottomPadding),
               child: GestureDetector(
-                child: Material(
-                  color: theme.backgroundColor ?? Colors.white,
-                  child: _renderPickerView(theme),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                  child: Material(
+                    color: theme.backgroundColor ?? Colors.white,
+                    child: _renderPickerView(theme),
+                  ),
                 ),
               ),
             ),
