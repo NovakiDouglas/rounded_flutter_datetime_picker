@@ -1,6 +1,6 @@
 # example
 
-A demo for flutter_datetime_picker
+A demo for rounded_flutter_datetime_picker
 
 ## Getting Started
 

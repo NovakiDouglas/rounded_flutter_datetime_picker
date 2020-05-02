@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/home/pleguen/Documents/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/pleguen/Documents/git/flutter_datetime_picker/example"
+export "FLUTTER_APPLICATION_PATH=/home/pleguen/Documents/git/rounded_flutter_datetime_picker/example"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"

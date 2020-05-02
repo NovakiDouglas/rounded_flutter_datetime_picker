@@ -1,15 +1,17 @@
-library flutter_datetime_picker;
+library rounded_flutter_datetime_picker;
+
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_datetime_picker/src/datetime_picker_theme.dart';
-import 'package:flutter_datetime_picker/src/date_model.dart';
-import 'package:flutter_datetime_picker/src/i18n_model.dart';
+import 'package:rounded_flutter_datetime_picker/src/datetime_picker_theme.dart';
+import 'package:rounded_flutter_datetime_picker/src/date_model.dart';
+import 'package:rounded_flutter_datetime_picker/src/i18n_model.dart';
 
-export 'package:flutter_datetime_picker/src/datetime_picker_theme.dart';
-export 'package:flutter_datetime_picker/src/date_model.dart';
-export 'package:flutter_datetime_picker/src/i18n_model.dart';
+export 'package:rounded_flutter_datetime_picker/src/datetime_picker_theme.dart';
+export 'package:rounded_flutter_datetime_picker/src/date_model.dart';
+export 'package:rounded_flutter_datetime_picker/src/i18n_model.dart';
 
 typedef DateChangedCallback(DateTime time);
 typedef DateCancelledCallback();
@@ -295,13 +297,16 @@ class _DatePickerState extends State<_DatePickerComponent> {
                   showTitleActions: widget.route.showTitleActions,
                   bottomPadding: bottomPadding),
               child: GestureDetector(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  child: Material(
-                    color: theme.backgroundColor ?? Colors.white,
-                    child: _renderPickerView(theme),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    child: Material(
+                      color: theme.backgroundColor ?? Colors.white,
+                      child: _renderPickerView(theme),
+                    ),
                   ),
                 ),
               ),
