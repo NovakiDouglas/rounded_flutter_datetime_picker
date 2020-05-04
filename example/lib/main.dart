@@ -106,8 +106,8 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   DatePicker.showDatePicker(context,
                       showTitleActions: true,
-                      minTime: DateTime(2018, 3, 5),
-                      maxTime: DateTime(2019, 6, 7),
+                      minTime: DateTime(2018, 1, 12),
+                      maxTime: DateTime.now(),
                       barrierColor: Colors.blue.withOpacity(0.2),
                       theme: DatePickerTheme(
                           headerColor: Colors.orange,

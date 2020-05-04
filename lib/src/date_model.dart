@@ -143,16 +143,19 @@ class DatePickerModel extends CommonPickerModel {
     _fillRightLists();
     int minMonth = _minMonthOfCurrentYear();
     int minDay = _minDayOfCurrentMonth();
-    _currentLeftIndex = this.currentTime.year - this.minTime.year;
+    _currentRightIndex = this.currentTime.year - this.minTime.year;
     _currentMiddleIndex = this.currentTime.month - minMonth;
-    _currentRightIndex = this.currentTime.day - minDay;
+    _currentLeftIndex = this.currentTime.day - minDay;
   }
 
-  void _fillLeftLists() {
-    this.leftList = List.generate(maxTime.year - minTime.year + 1, (int index) {
-      // print('LEFT LIST... ${minTime.year + index}${_localeYear()}');
-      return '${minTime.year + index}${_localeYear()}';
-    });
+  void _fillRightLists() {
+    this.rightList = List.generate(
+      maxTime.year - minTime.year + 1,
+      (int index) {
+        // print('LEFT LIST... ${minTime.year + index}${_localeYear()}');
+        return '${minTime.year + index}${_localeYear()}';
+      },
+    );
   }
 
   int _maxMonthOfCurrentYear() {
@@ -187,17 +190,17 @@ class DatePickerModel extends CommonPickerModel {
     });
   }
 
-  void _fillRightLists() {
+  void _fillLeftLists() {
     int maxDay = _maxDayOfCurrentMonth();
     int minDay = _minDayOfCurrentMonth();
-    this.rightList = List.generate(maxDay - minDay + 1, (int index) {
+    this.leftList = List.generate(maxDay - minDay + 1, (int index) {
       return '${minDay + index}${_localeDay()}';
     });
   }
 
   @override
-  void setLeftIndex(int index) {
-    super.setLeftIndex(index);
+  void setRightIndex(int index) {
+    super.setRightIndex(index);
     //adjust middle
     int destYear = index + minTime.year;
     int minMonth = _minMonthOfCurrentYear();
@@ -238,11 +241,15 @@ class DatePickerModel extends CommonPickerModel {
     }
 
     _fillMiddleLists();
-    _fillRightLists();
+    _fillLeftLists();
     minMonth = _minMonthOfCurrentYear();
     int minDay = _minDayOfCurrentMonth();
     _currentMiddleIndex = currentTime.month - minMonth;
-    _currentRightIndex = currentTime.day - minDay;
+    _currentLeftIndex = currentTime.day - minDay;
+
+    _currentRightIndex = this.currentTime.year - this.minTime.year;
+    _currentMiddleIndex = this.currentTime.month - minMonth;
+    _currentLeftIndex = this.currentTime.day - minDay;
   }
 
   @override
@@ -274,14 +281,14 @@ class DatePickerModel extends CommonPickerModel {
       currentTime = newTime;
     }
 
-    _fillRightLists();
+    _fillLeftLists();
     int minDay = _minDayOfCurrentMonth();
-    _currentRightIndex = currentTime.day - minDay;
+    _currentLeftIndex = currentTime.day - minDay;
   }
 
   @override
-  void setRightIndex(int index) {
-    super.setRightIndex(index);
+  void setLeftIndex(int index) {
+    super.setLeftIndex(index);
     int minDay = _minDayOfCurrentMonth();
     currentTime = currentTime.isUtc
         ? DateTime.utc(
