@@ -47,3 +47,5 @@
 ## [1.3.7] - fix some issues
 ## [1.3.8] - add Swedish language and fix issues
 ## [1.3.9] - add blur
+## [1.3.10] - tbd
+## [1.3.11] - Fix Diagnosticable
