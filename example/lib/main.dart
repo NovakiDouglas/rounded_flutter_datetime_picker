@@ -8,16 +8,16 @@ class CustomPicker extends CommonPickerModel {
     return '$value'.padLeft(length, "0");
   }
 
-  CustomPicker({DateTime currentTime, LocaleType locale})
+  CustomPicker({DateTime? currentTime, LocaleType? locale})
       : super(locale: locale) {
     this.currentTime = currentTime ?? DateTime.now();
-    this.setLeftIndex(this.currentTime.hour);
-    this.setMiddleIndex(this.currentTime.minute);
-    this.setRightIndex(this.currentTime.second);
+    this.setLeftIndex(this.currentTime!.hour);
+    this.setMiddleIndex(this.currentTime!.minute);
+    this.setRightIndex(this.currentTime!.second);
   }
 
   @override
-  String leftStringAtIndex(int index) {
+  String? leftStringAtIndex(int index) {
     if (index >= 0 && index < 24) {
       return this.digits(index, 2);
     } else {
@@ -26,7 +26,7 @@ class CustomPicker extends CommonPickerModel {
   }
 
   @override
-  String middleStringAtIndex(int index) {
+  String? middleStringAtIndex(int index) {
     if (index >= 0 && index < 60) {
       return this.digits(index, 2);
     } else {
@@ -35,7 +35,7 @@ class CustomPicker extends CommonPickerModel {
   }
 
   @override
-  String rightStringAtIndex(int index) {
+  String? rightStringAtIndex(int index) {
     if (index >= 0 && index < 60) {
       return this.digits(index, 2);
     } else {
@@ -60,18 +60,18 @@ class CustomPicker extends CommonPickerModel {
 
   @override
   DateTime finalTime() {
-    return currentTime.isUtc
+    return currentTime!.isUtc
         ? DateTime.utc(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
+            currentTime!.year,
+            currentTime!.month,
+            currentTime!.day,
             this.currentLeftIndex(),
             this.currentMiddleIndex(),
             this.currentRightIndex())
         : DateTime(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
+            currentTime!.year,
+            currentTime!.month,
+            currentTime!.day,
             this.currentLeftIndex(),
             this.currentMiddleIndex(),
             this.currentRightIndex());
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
                               TextStyle(color: Colors.white, fontSize: 16)),
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   }, currentTime: DateTime.now(), locale: LocaleType.en);
@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showTimePicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   }, currentTime: DateTime.now());
@@ -148,7 +148,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showTime12hPicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   }, currentTime: DateTime.now());
@@ -164,7 +164,7 @@ class HomePage extends StatelessWidget {
                       minTime: DateTime(2020, 5, 5, 20, 50),
                       maxTime: DateTime(2020, 6, 7, 05, 09), onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   }, locale: LocaleType.zh);
@@ -178,7 +178,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showDateTimePicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   }, currentTime: DateTime(2008, 12, 31, 23, 12, 34));
@@ -192,7 +192,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showDateTimePicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   },
@@ -208,7 +208,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showDateTimePicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   },
@@ -224,7 +224,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showDateTimePicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   },
@@ -240,7 +240,7 @@ class HomePage extends StatelessWidget {
                   DatePicker.showPicker(context, showTitleActions: true,
                       onChanged: (date) {
                     print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
+                        date!.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
                     print('confirm $date');
                   },
